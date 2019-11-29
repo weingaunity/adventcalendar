@@ -1,11 +1,20 @@
 # Instagram Adventcalendar - Stories 2019
+A quick JavaScript introduction in 24 days
 created by DI Klaus Weichinger  snaky.1@gmx.at  
 
 License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.en)
 
 Each day the new lines of code are inserted here. Maybe in worst case 1-2 days delayed.
 
-# Day 0 (2019-11-30)
+
+# Day 0 (2019-11-30) - Short Introduction
+[Show Story Image](./media2019/day00.png)
+- Git-Repository of the code snippets:
+  [https://github.com/weingaunity/adventcalendar](https://github.com/weingaunity/adventcalendar)
+
+- Required: A browser Firefox or Chrome
+- Press F12 and switch to the console
+
 
 # Day 1 (2019-12-01)
 # Day 2 (2019-12-02)
