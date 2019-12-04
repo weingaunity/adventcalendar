@@ -159,6 +159,35 @@ console.log(lst.sort())
 
 
 # Day 5 (2019-12-05)
+[Show Story Image](./media2019/day05.jpeg)
+```javascript
+// ====================================
+// Day 5 (2019-12-05) - Objects
+// ====================================
+var o={
+  a: 123,
+  b:"asd",
+  test:[1,2,3],
+  fun:function(){console.log("Hello")}
+};
+if (o.hasOwnProperty("foo")==false)
+{
+  console.log("foo does not exists");
+}
+o.foo=444;
+if (o.hasOwnProperty("foo"))
+{
+  console.log("foo does now exists");
+}
+
+// different ways to access members
+o.fun(); // call the member function
+console.log(o.foo);
+console.log(o["foo"]);
+var n="foo";
+console.log(o[n]);
+```
+
 # Day 6 (2019-12-06)
 # Day 7 (2019-12-07)
 # Day 8 (2019-12-08)
