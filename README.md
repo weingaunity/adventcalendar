@@ -83,10 +83,81 @@ while(i<3)
 }
 ```
 
-
-
 # Day 3 (2019-12-03)
+[Show Story Image](./media2019/day03.jpeg)
+```javascript
+// ==============================
+// Day 3 (2019-12-03) - Functions
+// ==============================
+function myFun1(a,b)
+{
+  return a+b;
+}
+
+var myFun2=function(a,b)
+{ // anonymous function
+  // assigned to variable
+  return a*b;
+};
+
+var myFun3=(a,b=2)=>{
+  // arrow function with default
+  // parameter value for b
+  return a/b;
+};
+
+console.log(myFun1(5,3));
+console.log(myFun2(5,3));
+console.log(myFun3(5));
+
+var funarray=[ // Array of functions
+  function(){ return "Advent"; },
+  function(){ return "Calendar"; },
+  function(){ return "2019"; }
+];
+// Add a function to the array
+funarray.push( ()=>"@__wg__");
+
+// Call all functions in the array
+for(var fn of funarray)
+  console.log(fn());
+```
+
+
 # Day 4 (2019-12-04)
+[Show Story Image](./media2019/day04.jpeg)
+```javascript
+// ====================================
+// Day 4 (2019-12-04) - Lists
+// ====================================
+
+var lst=[3,2,10,1,5];
+lst.push(7); // append at end
+lst.unshift(-1); // append at begin
+console.log(lst);
+
+// remove first element and plot it
+console.log(lst.shift());
+
+// apply a function (or arrow function
+// to each element) and return the
+// result as new list
+lst2=lst.map(
+  (x)=>{console.log(x); return x*x;}
+);
+console.log(lst2);
+
+// filter elements. Function returns
+// true if element is valid. Else false
+lst3=lst.filter((x)=>((x%5)==0));
+console.log(lst3);
+
+// sorting. Comparison function
+// can be passed too
+console.log(lst.sort())
+```
+
+
 # Day 5 (2019-12-05)
 # Day 6 (2019-12-06)
 # Day 7 (2019-12-07)
