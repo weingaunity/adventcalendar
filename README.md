@@ -83,7 +83,7 @@ while(i<3)
 }
 ```
 
-# Day 3 (2019-12-03)
+# Day 3 (2019-12-03) - Functions
 [Show Story Image](./media2019/day03.jpeg)
 ```javascript
 // ==============================
@@ -124,7 +124,7 @@ for(var fn of funarray)
 ```
 
 
-# Day 4 (2019-12-04)
+# Day 4 (2019-12-04) - Lists
 [Show Story Image](./media2019/day04.jpeg)
 ```javascript
 // ====================================
@@ -158,7 +158,7 @@ console.log(lst.sort())
 ```
 
 
-# Day 5 (2019-12-05)
+# Day 5 (2019-12-05) - Objects
 [Show Story Image](./media2019/day05.jpeg)
 ```javascript
 // ====================================
@@ -188,9 +188,86 @@ var n="foo";
 console.log(o[n]);
 ```
 
-# Day 6 (2019-12-06)
-# Day 7 (2019-12-07)
-# Day 8 (2019-12-08)
+# Day 6 (2019-12-06) - Cyclic Tasks
+[Show Story Image](./media2019/day06.png)
+
+Source code highlighted with [https://carbon.now.sh](https://carbon.now.sh)
+
+```javascript
+// ====================================
+// Day 6 (2019-12-06) - Cyclic Tasks
+// ====================================
+var counter=0;
+var task1=function(){
+  counter++;
+  console.log("Task 1 ("+counter+")");
+  setTimeout(task1,1000); // run in 1000ms
+}
+
+var task2=function(){
+  counter++;
+  console.log("Task 2 ("+counter+")");
+  setTimeout(task2,300); // run in 300ms
+}
+
+task1(); // start task 1
+task2(); // start task 2
+
+// Hint: have a look to setInterval() too
+```
+
+# Day 7 (2019-12-07) - JSON Part 1/2
+[Show Story Image](./media2019/day07.jpeg)
+
+```javascript
+// ====================================
+// Day 7 (2019-12-07) - JSON Part 1/2
+// JavaScript Object Notation
+// ====================================
+
+var wg={
+  instagram: "@__wg__",
+  followers: 258,
+  hashtags:["#profweichinger","#wgproj"]
+};
+
+// convert object to JSON string
+var s=JSON.stringify(wg);
+console.log(s);
+// s can be transmitted or stored to file or database
+//   Hint: JSON string is valid JavaScript!
+//   Do not use eval(...) to convert JSON to object
+//   due to security issues (code injection)!
+// r is received or read from file or database
+var r=s;
+// convert JSON string back to object
+var instagramuser=JSON.parse(r);
+console.log("Instagram: "+instagramuser.instagram);
+```
+
+# Day 8 (2019-12-08) - JSON Part 2/2
+[Show Story Image](./media2019/day08.jpeg)
+```javascript
+// ====================================
+// Day 8 (2019-12-08) - JSON Part 2/2
+// JavaScript Object Notation
+// ====================================
+
+// JSON is valid JavaScript!
+// Object created with JSON syntax
+var wg={"instagram":"@__wg__","followers":258,
+"hashtags":["#profweichinger","#wgproj"]};
+
+wg.meta={bool: false, number: NaN, obj:null,
+unixtime:Date.now(), date:new Date()};
+// Date.now() returns milliseconds
+// since 1.1.1917 00:00
+
+var prittystring=JSON.stringify(wg, null, 2); 
+console.log(prittystring);
+```
+
+
 # Day 9 (2019-12-09)
 # Day 10 (2019-12-10)
 # Day 11 (2019-12-11)
