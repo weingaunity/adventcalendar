@@ -268,9 +268,109 @@ console.log(prittystring);
 ```
 
 
-# Day 9 (2019-12-09)
-# Day 10 (2019-12-10)
-# Day 11 (2019-12-11)
+# Day 9 (2019-12-09) - HTTP Request using fetch()
+[Show Story Image](./media2019/day09.jpeg)
+```javascript
+// ====================================
+// Day 9 (2019-12-09) - HTTP Request
+// using fetch() and promises
+// ====================================
+var url="https://raw.githubusercontent.com/"+
+        "weingaunity/adventcalendar/master/"+
+        "media2019/data.json";
+
+fetch(url,{
+  cache: "no-cache",
+  mode: "cors"
+})
+.then(function (response) {
+  // parse response to JSON
+  // returns promise again
+  return response.json();
+}).then(function(json){
+  // process JSON response
+  console.log("I'm late because of async");
+  console.log(json);
+}).catch(function(e){
+  // an error ocurred
+});
+
+console.log("I'm first");
+
+// = Output ===========================
+```
+
+# Day 10 (2019-12-10) - HTTP Request with query parameters
+[Show Story Image](./media2019/day10.jpeg)
+```javascript
+// ====================================
+// Day 10 (2019-12-10) - HTTP Request
+// with query parameters
+// ====================================
+
+//               .....?<Query String>
+// http://test.org/api?a=123&b=asd&...
+// use encodeURI to insert escape sequences
+// for special characters
+console.log("encodeURI-Result:");
+console.log(encodeURI('"[Hello World&{}]"'));
+
+var url="https://iot.makerspace-amstetten.at/"+
+        "thing/adventcalender/echo";
+        
+data={a: 123, b:"adfer", c:[1,2,3]};
+var query="value="+encodeURI(JSON.stringify(data));
+console.log(url+"?"+query);
+
+fetch(url+"?"+query,
+  {cache: "no-cache", mode: "cors" }
+).then(function (response) {
+  return response.json();
+}).then(function(json){
+  // process JSON response
+  console.log("Echo Response");
+  console.log(json);
+}).catch(function(e){
+  // an error ocurred
+});
+
+console.log("Output");
+
+// = Output ===========================
+```
+
+# Day 11 (2019-12-11) - HTTP Post-Request
+[Show Story Image](./media2019/day11.jpeg)
+```javascript
+// =======================================
+// Day 11 (2019-12-11) - HTTP Post-Request
+// =======================================
+var url="https://iot.makerspace-amstetten.at/"+
+        "thing/adventcalender/echo";
+data={a: 123, b:"adfer", c:[1,2,3]};
+
+// encodeURI done by fetch
+fetch(url,{
+  method:"POST",
+  cache: "no-cache",
+  mode: "cors",
+  // send data in message-body of request
+  body:JSON.stringify(data)
+}).then(function (response) {
+  return response.json();
+}).then(function(json){
+  // process JSON response
+  console.log("Echo Response");
+  console.log(json);
+}).catch(function(e){
+  // an error ocurred
+});
+
+console.log("Output");
+
+// = Output ===========================
+```
+
 # Day 12 (2019-12-12)
 # Day 13 (2019-12-13)
 # Day 14 (2019-12-14)
