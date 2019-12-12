@@ -371,9 +371,130 @@ console.log("Output");
 // = Output ===========================
 ```
 
-# Day 12 (2019-12-12)
-# Day 13 (2019-12-13)
-# Day 14 (2019-12-14)
+# Day 12 (2019-12-12) - Create an Object
+[Show Story Image](./media2019/day12.png)
+```javascript
+// =======================================
+// Day 12 (2019-12-12) - Create an Object
+// =======================================
+var animal=function(type, name, sound)
+{
+  var age=0; // local/private variable
+
+  var obj={};
+
+  obj.sound=sound; // public variable
+  obj.state=function(){
+    // type and name can be used without
+    // storing them separate in the object
+    console.log(type+" "+name+" makes "+
+    obj.sound+" and is "+age+" years old.");
+  };
+  obj.birthday=function(){
+    age++; // change private variable
+  };
+
+  return obj; // return created object
+}
+
+var dog=animal("Dog","Snoopy","WauWau");
+var cat=animal("Cat","Kitty","Miau");
+dog.sound="Wauuuu Wauuuu";
+dog.birthday();
+dog.birthday();
+dog.birthday();
+
+cat.birthday();
+cat.birthday();
+
+dog.state();
+cat.state();
+
+// = Output ===========================
+```
+
+# Day 13 (2019-12-13) - Using class
+[Show Story Image](./media2019/day13.png)
+```javascript
+// =======================================
+// Day 13 (2019-12-13) - Using class
+//   I prefer the version used in Day 12
+// =======================================
+
+class Animal{
+  // #age=0 // new feature for private, not supported
+            // up to now
+  constructor(type, name, sound) {
+    this._age=0;
+    this.type=type;
+    this.name=name;
+    this.sound=sound;
+  }
+  
+  birthday=function(){
+    this._age++;
+  }
+
+  state=function()
+  {
+    console.log(this.type+" "+this.name+" makes "+
+    this.sound+" and is "+this._age+" years old.");
+  }
+
+};
+
+var dog=new Animal("Dog","Snoopy","WauWau");
+var cat=new Animal("Cat","Kitty","Miau");
+dog.sound="Wauuuu Wauuuu";
+dog.birthday();
+dog.birthday();
+dog.birthday();
+
+cat.birthday();
+cat.birthday();
+
+dog.state();
+cat.state();
+
+// = Output ===========================
+```
+
+
+# Day 14 (2019-12-14) - Getter and Setter
+[Show Story Image](./media2019/day14.png)
+```javascript
+// =======================================
+// Day 14 (2019-12-14) - Getter and Setter
+// =======================================
+
+var myObject=function()
+{
+  var localvariable=44; // initial value
+  obj={
+    get v(){
+      console.log("Getter called");
+      return localvariable;
+    },
+    set v(value) {
+      console.log("Setter called");
+      localvariable=value;
+    }
+  };
+  return obj;
+};
+
+var o=myObject();
+
+console.log(o.v);
+o.v=123;
+console.log(o.v);
+
+// no chance to access localvariable
+console.log(o.localvariable);
+
+// = Output ===========================
+```
+
 # Day 15 (2019-12-15)
 # Day 16 (2019-12-16)
 # Day 17 (2019-12-17)
