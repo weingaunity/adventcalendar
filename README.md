@@ -460,7 +460,7 @@ cat.state();
 ```
 
 
-# Day 14 (2019-12-14) - Getter and Setter
+# Day 14 (2019-12-14) - Getter and Setter Part 1
 [Show Story Image](./media2019/day14.png)
 ```javascript
 // =======================================
@@ -495,13 +495,210 @@ console.log(o.localvariable);
 // = Output ===========================
 ```
 
-# Day 15 (2019-12-15)
-# Day 16 (2019-12-16)
-# Day 17 (2019-12-17)
-# Day 18 (2019-12-18)
-# Day 19 (2019-12-19)
-# Day 20 (2019-12-20)
-# Day 21 (2019-12-21)
+# Day 15 (2019-12-15) - Getter and Setter Part 2
+[Show Story Image](./media2019/day15.jpeg)
+```javascript
+// =======================================
+// Day 15 (2019-12-15) - Getter and Setter
+// Part 2
+// =======================================
+
+var myObject=function(name)
+{
+  var localvariable=0; // initial value
+  obj={
+    get [name](){
+      console.log("Getter called");
+      return localvariable;
+    },
+    set [name](value) {
+      console.log("Setter called");
+      localvariable=value;
+    }
+  };
+  return obj;
+};
+
+var o=myObject("test");
+
+console.log(o.test);
+o.test=123;
+console.log(o.test);
+
+// = Output ===========================
+```
+
+# Day 16 (2019-12-16) - Checking for properties
+[Show Story Image](./media2019/day16.jpeg)
+```javascript
+// ==================================
+// Day 16 (2019-12-16) - Checking for
+//                       properties
+// ==================================
+
+var obj={a:"asb",b:false,c:[]};
+
+if (obj.a) console.log("Prop a exists");
+  else console.log("Prop a does not exist");
+// if property is boolean, this way to check
+// will fail
+if (obj.b) console.log("Prop b exists");
+  else console.log("Prop b does not exist");
+
+// hasOwnProperty will be more secure
+if (obj.hasOwnProperty("b"))
+  console.log("Prop b exists");
+  else console.log("Prop b does not exist");
+
+// if value or param does not exist, use a
+// default value using || operator.
+// Again: be aware of booleans here
+var test=obj.d || {default: "object"};
+console.log(test);
+
+// = Output ===========================
+```
+
+# Day 17 (2019-12-17) - Operators Part 1
+[Show Story Image](./media2019/day17.jpeg)
+```javascript
+// ======================================
+// Day 17 (2019-12-17) - Operators Part 1
+//   Spread Operator: ...
+//   allows to expand array or string to
+//   be expanded as arguments
+// ======================================
+
+var list=[1,5,3,2,1,5,6];
+
+console.log(Math.max(1,5,3,2,1,5,6));
+// Math.max(list); // this does not work
+console.log(Math.max(...list));
+
+var obj1={a:123, b:432, c:231};
+var obj2={...obj1, d:222};
+var list2=[...list,100,200];
+console.log(obj2);
+console.log(list2);
+
+// = Output ===========================
+```
+
+# Day 18 (2019-12-18) - Operators Part 2
+[Show Story Image 1](./media2019/day18-1.jpeg) [Show Story Image 2](./media2019/day18-2.jpeg)
+```javascript
+// ======================================
+// Day 18 (2019-12-18) - Operators Part 2
+//   Ternary conditional: a ? b : c
+//   returns b, if condition a is true,
+//   else it returns c
+// ======================================
+
+var fun=function(i)
+{
+  console.log("### i = "+i);
+  a=((i===1)?(true):((i===true)?true:false));
+  console.log("a = "+a);
+  if (a) {
+    console.log("a is true (IF way)");
+  } else {
+    console.log("a is false (IF way)");
+  }
+  console.log("a is "+(a?"true":"false")+"(? way)");
+  var b=(a==false)?53:"df";
+  console.log("b="+b);
+}
+
+fun(false);
+fun(true);
+fun(1);
+fun(0.5);
+
+// = Output ===========================
+```
+
+# Day 19 (2019-12-19) - Operators Part 3
+[Show Story Image](./media2019/day19.jpeg)
+```javascript
+// ======================================
+// Day 19 (2019-12-19) - Operators Part 3
+//   "=" vs "==" vs "==="
+// ======================================
+
+// Assignment "=" that will return the
+// assigned value.
+console.log("'=' Examples");
+var a=b=3;
+var c=(d=4)+3;
+console.log([a,b,c,d]);
+
+// Abstract comparison "==" converts the operands
+// to the same type before compare them
+console.log("'==' Examples");
+console.log([ 5=="5" , true==1   ,  true==0  ]);
+console.log([ 5=="6" ,  "6"=='6' , false==-1 ]);
+console.log([ 0==[]  ,    0=={}  ,    []=={} ]);
+console.log([ null == undefined ]);
+
+// Strict comparison "===" compares type and content
+console.log("'===' Examples");
+console.log([ 5==="5" , true === 1 ]);
+console.log([ 0===[]  , null === undefined ]);
+console.log([ null === null  , undefined===undefined ]);
+
+// = Output ===========================
+```
+
+# Day 20 (2019-12-20) - Operators Part 4
+[Show Story Image](./media2019/day20.png)
+```javascript
+// ======================================
+// Day 20 (2019-12-20) - Operators Part 4
+//   Rest operator "..."
+// ======================================
+
+var fun=function(first,second,...rest)
+{
+  console.log("~~~~~~~~~~~~~~~~~~~");
+  console.log(first);
+  console.log(second);
+  console.log("Rest-Length: "+rest.length);
+  console.log(rest);
+}
+
+fun(1,5,"Hallo",43,{a:2,b:3});
+fun("A",[1,2,3]);
+
+// = Output ===========================
+```
+
+# Day 21 (2019-12-21) - Operators Part 5
+[Show Story Image](./media2019/day21.png)
+```javascript
+// ======================================
+// Day 21 (2019-12-21) - Operators Part 5
+//   typeof operand
+//   typeof (operand)
+// returns a string of the operand
+// ======================================
+
+var lst=[undefined,
+         null,
+         true,
+         1.34,
+         900719923412340991n,
+         "abcd",
+         [1,2,3],
+         function(){return 1;},
+         {a:3, b:32} ];
+
+for(var i=0;i<lst.length;i++)
+{
+  console.log(typeof lst[i])
+}
+// = Output ===========================
+```
+
 # Day 22 (2019-12-22)
 # Day 23 (2019-12-23)
 # Day 24 (2019-12-24)
