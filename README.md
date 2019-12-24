@@ -699,6 +699,108 @@ for(var i=0;i<lst.length;i++)
 // = Output ===========================
 ```
 
-# Day 22 (2019-12-22)
+# Day 22 (2019-12-22) - Operators Part 5
+[Show Story Image](./media2019/day22.png)
+```javascript
+// ======================================
+// Day 22 (2019-12-22) - Operators Part 5
+//   "instanceof"  and  "in"
+// ======================================
+
+function cat(sound) {
+  this.type="cat";
+  this.output=function(){console.log(sound);};
+}
+
+function dog(sound) {
+  this.output=function(){console.log(sound);};
+}
+
+var kitty=new cat("Miau");
+var snoopy=new dog("WauWau");
+kitty.output();
+console.log(kitty instanceof cat);
+console.log(kitty instanceof dog);
+console.log("type" in kitty);
+console.log("type" in snoopy);
+
+// = Output ===========================
+```
+
 # Day 23 (2019-12-23)
+[Show Story Image](./media2019/day23.png)
+```javascript
+// =========================================
+// Day 23 (2019-12-23) - Strings and Numbers
+// =========================================
+//     0123456789012345678 ... Index
+console.log("Some String Operations:");
+var s="23. Dezember 2019";
+console.log(s.length);
+console.log(s.toUpperCase().includes("DEZEMBER"));
+console.log(s.indexOf("."));
+console.log(s.substr(4,8)); //start,length
+console.log(s.substring(4,12)); //start,end(without)
+console.log(s.startsWith("23."));
+console.log(s.split(" ").join("-"));
+
+var d=10.0;
+var A=Math.pow(d,2)*Math.PI/4;
+var x=d*Math.cos(60*Math.PI/180);
+var y=Math.log(1.23); // ln(1.23)
+var z=Math.log10(1.23); // log(1.23)
+// = Output ===========================
+```
+
 # Day 24 (2019-12-24)
+[Show Story Image 1](./media2019/day24-1.png)
+[Show Story Image 2](./media2019/day24-2.png)
+```javascript
+// =========================================
+// Day 24 (2019-12-24) - Hello XY-MAS Tree
+// lambdas, generators, yield
+// =========================================
+var plotXYMASTree=function(height,axis)
+{
+  var space=(n=>" ".repeat(n));
+  var fillspace=((s,w)=>space((w-s.length)/2)+
+                    s+space((w-s.length)/2));
+  var w=2*height+1;
+  function* layer() // generator
+  {
+    var index = 0;
+    yield fillspace("*",w);
+    while(index<height-1)
+    {
+      yield fillspace("*"+
+      ("-".repeat((index++)*2+1))+"*",w);
+    }
+    yield fillspace("#",w);
+    yield fillspace("###",w);
+  }
+  var tree=[];  
+  for(let i of layer()) tree.push(i);
+  if (axis=="X")
+  {
+    for(var i=0;i<w;i++)
+    {
+      var line="";
+      for(var j=tree.length-1;j>=0;j--)
+      {
+        c=tree[j][i];
+        if (c=="-") c="|";
+        line+=c;
+      }
+      console.log(line);
+    }
+  } else {
+    for(var i=0;i<tree.length;i++)
+      console.log(tree[i]);
+  }
+}
+
+plotXYMASTree(5,"X");
+plotXYMASTree(5,"Y");
+
+// = Output ===========================
+```
